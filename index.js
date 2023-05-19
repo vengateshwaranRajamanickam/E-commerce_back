@@ -1,10 +1,11 @@
 import express  from 'express';
 //import {app} from './app.js'
-import database from './DbConfig/mongodb.js'
+
 // const nodeServer = express();
 import cors from "cors";
 import * as dotenv from "dotenv";
 dotenv.config();
+import {database} from './DbConfig/mongodb.js'
 
 const PORT=process.env.PORT
 const HOST=process.env.HOST 
@@ -17,6 +18,7 @@ import bodyParser from 'body-parser'
 export const app = express();
 app.use(express.json()) 
 app.use(cors());
+
 app.listen(PORT,HOST,database)
 
 app.use('/search',Stackrouter)
@@ -24,5 +26,6 @@ app.use('/user',Userrouter)
 
 app.use(bodyParser.json())  //new express js no need bodyparser
 app.use(bodyParser.urlencoded({extended:true}))
+   
 
-
+ 
