@@ -5,7 +5,7 @@ import express  from 'express';
 import cors from "cors";
 import * as dotenv from "dotenv";
 dotenv.config();
-import {database} from './DbConfig/mongodb.js'
+import database from './DbConfig/mongodb.js'
 
 const PORT=process.env.PORT
 const HOST=process.env.HOST 
