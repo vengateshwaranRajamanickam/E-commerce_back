@@ -15,7 +15,8 @@ const Stackschema=mongoose.Schema({
         required:true
     },
     answer:{
-        type:[Object]
+        type:[Object],
+        create_at:Number
     },
    viewcount:{
         type:Number
@@ -25,6 +26,9 @@ const Stackschema=mongoose.Schema({
     },
     displayname:{
         type:String
+    },
+    create_at:{
+        type:Number
     }
 })
 
