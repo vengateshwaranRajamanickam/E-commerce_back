@@ -29,6 +29,7 @@ export const Reset = async function (req,res, next) {
             let random = (Math.random() + 1).toString(36).substring(7);
             const salt = await bcrypt.genSalt(10);
             const verifylink= await bcrypt.hash(random, salt);
+            await UserModel.updateOne({userEmail:userEmail},{hashedPassword:verifylink})
             let config = {
                 service: "gmail",
                 auth: {
@@ -81,23 +82,35 @@ export const Reset = async function (req,res, next) {
 export const Login = async (req, res) => {
     try {
       const {  userEmail, password } = req.body;
-      console.log(userEmail, password)
       const userFromDB =await UserModel.find({userEmail:userEmail})
-      console.log(userFromDB)
       const storedDbPassword =userFromDB[0].hashedPassword
-      console.log(storedDbPassword)
-      const isPasswordMatch = await bcrypt.compare(password, storedDbPassword);
-      console.log(storedDbPassword,isPasswordMatch)
+      const isPasswordMatch = await bcrypt.compare(password, storedDbPassword)
         //normal=storedpassword
       if (!isPasswordMatch || !userFromDB) {
         return res.status(400).send({ message: "Invalid Credentials" });
       }
       //const token = jwt.sign({ id: userFromDB._id }, process.env.SECRET_KEY);
-      //const send=await UserModel.findOne({userEmail:userEmail},{hashedPassword:0})
-      return res.send({ sucess:true,data: userFromDB,message: "Successfully Logged In" });
+      const send=await UserModel.findOne({userEmail:userEmail},{hashedPassword:0})
+      return res.send({ sucess:true,data: send,message: "Successfully Logged In" });
     }
     catch (err) {
       return res.status(500).send({ message: err.message })
     }; 
   }
 
+  export const Verifypassword = async function (req,res, next) {
+    const {link, password, Email} = req.body;
+    const approval = await UserModel.find({$and:[{verifypass:link},{userEmail:Email}]})
+    try {
+        if (approval) {
+          await UserModel.updateOne({userEmail:Email},{$set:{verifypass:"",password:password}})
+            return res.status(200).json({ success: true, message: "Password created Success" })
+        }
+        else {
+            return res.status(500).json({ success: false, message: "Password create Failed" })
+        }
+    }
+    catch (err) {
+        return res.status(400).send({ message: err.message })
+    }
+}

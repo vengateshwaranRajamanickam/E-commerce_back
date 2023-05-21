@@ -16,7 +16,10 @@ const Stackschema=mongoose.Schema({
     },
     answer:{
         type:[Object],
-        create_at:Number
+        create_at:{
+            type: Date,
+            default: Date.now()
+        }
     },
    viewcount:{
         type:Number
@@ -28,7 +31,8 @@ const Stackschema=mongoose.Schema({
         type:String
     },
     create_at:{
-        type:Number
+        type: Date,
+        default: Date.now()
     }
 })
 

@@ -14,23 +14,23 @@ import bodyParser from 'body-parser'
 // nodeServer.use("/",app)
 
 export const app = express();
-app.use(express.json()) 
+app.use(bodyParser.json({ limit: "500mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "500mb" }))
 app.use(cors());
 
-const PORT=9000
+const PORT=process.env.PORT
 const MONGO_URL=process.env.MONGO_URL
+
 const start = async () => {
   try {
-    await mongoose.connect(
-        "mongodb+srv://vengateshwaran1994:lGCFaxbFgo8iFBPD@cluster0.trow9xu.mongodb.net/?retryWrites=true&w=majority"
-    );
-    app.listen(9000, () => console.log("Server started on port 3000"));
+    await mongoose.connect(MONGO_URL); 
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
     console.error(error);
     process.exit(1);
   }
 };
-
+ 
 start()
       
     
@@ -38,8 +38,7 @@ start()
 app.use('/search',Stackrouter)
 app.use('/user',Userrouter)
 
-app.use(bodyParser.json())  //new express js no need bodyparser
-app.use(bodyParser.urlencoded({extended:true}))
+
    
 
  

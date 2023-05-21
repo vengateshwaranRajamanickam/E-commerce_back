@@ -49,3 +49,17 @@ export const Questiondetail=async function (req,res, next) {
         return res.status(500).send({ message:err.message })
     }
 }
+
+export const Answerdetail= async function (req, res){
+    const {id}=req.query;
+    const body=req.body;
+    console.log(body)
+    try{
+        await StackModel.updateOne({_id:id },{$push:{answer:body}})
+        return res.status(200).json({success:true, message: "Answer added successfully" })
+    }
+      catch(err){
+        return res.status(400).send({ message: "Answer not added successfully" })
+    }
+}
+   
