@@ -23,7 +23,7 @@ const MONGO_URL=process.env.MONGO_URL
 
 const start = async () => {
   try {
-    await mongoose.connect(MONGO_URL); 
+    await mongoose.connect("mongodb+srv://vengateshwaran1994:lGCFaxbFgo8iFBPD@cluster0.trow9xu.mongodb.net/?retryWrites=true&w=majority"); 
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
     console.error(error);
