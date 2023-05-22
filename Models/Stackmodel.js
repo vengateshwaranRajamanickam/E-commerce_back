@@ -15,8 +15,7 @@ const Stackschema=mongoose.Schema({
         required:true
     },
     answer:{
-        type:[Object],
-        timestamps: true
+        type:[Object]
     },
    viewcount:{
         type:Number,
@@ -30,7 +29,8 @@ const Stackschema=mongoose.Schema({
         type:String,
         default:"not mensioned"
     },
-     timestamps: true
-})
+}, 
+{timestamps: true}
+)
 
 export default mongoose.model("Stack",Stackschema)
