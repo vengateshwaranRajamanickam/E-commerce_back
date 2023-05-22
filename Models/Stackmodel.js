@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
-const AnswerSchema = new mongoose.Schema({
-    answerText: {
-        type: String,
-        required: true
-    }
-}, { timestamps: true });
+
 
 const Stackschema=mongoose.Schema({
     question:{
@@ -20,7 +15,7 @@ const Stackschema=mongoose.Schema({
         required:true
     },
     answer:{
-        type:[AnswerSchema],
+        type:[object],
         timestamps: true
     },
    viewcount:{
