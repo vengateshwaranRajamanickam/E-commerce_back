@@ -16,24 +16,21 @@ const Stackschema=mongoose.Schema({
     },
     answer:{
         type:[Object],
-        create_at:{
-            type: Date,
-            default: Date.now()
-        }
+        timestamps: true
     },
    viewcount:{
-        type:Number
+        type:Number,
+        default:0
     },
     votecount:{
-        type:Number
+        type:Number,
+        default:0
     },
     displayname:{
-        type:String
+        type:String,
+        default:"not mensioned"
     },
-    create_at:{
-        type: Date,
-        default: Date.now()
-    }
+     timestamps: true
 })
 
 export default mongoose.model("Stack",Stackschema)
