@@ -8,6 +8,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import {Stackrouter} from './router/Stack.js'
 import { Userrouter } from "./router/User.js";
+import {Companyrouter} from './router/Company.js'
 import bodyParser from 'body-parser'
 
 // nodeServer.listen(PORT,HOST,database)
@@ -37,6 +38,7 @@ start()
 
 app.use('/search',Stackrouter)
 app.use('/user',Userrouter)
+app.use('/company',Companyrouter)
 
 
    
