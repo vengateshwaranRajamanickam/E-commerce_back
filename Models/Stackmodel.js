@@ -15,8 +15,7 @@ const Stackschema=mongoose.Schema({
         required:true
     },
     answer:{
-        type:[Object],
-        timestamps: true
+        type:[Object]
     },
     viewcount:{
         type:Number,
