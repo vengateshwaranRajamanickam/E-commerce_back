@@ -18,7 +18,7 @@ const Stackschema=mongoose.Schema({
         type:[Object],
         timestamps: true
     },
-   viewcount:{
+    viewcount:{
         type:Number,
         default:0
     },
