@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "500mb" }))
 
 app.use(
   cors({
-    origin: "https://earnest-baklava-710d61.netlify.app",
+    origin: "https://eloquent-daffodil-94482d.netlify.app",
     methods: "GET,POST,PUT,DELETE",
     credentials: true
   })
