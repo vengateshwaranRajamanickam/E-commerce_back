@@ -30,7 +30,6 @@ app.use(
   })
 );
 
-const PORT=process.env.PORT
 app.use(cookie({
   secret: 'your-secret-key',
   resave: false,
@@ -40,19 +39,18 @@ app.use(cookie({
 
 app.use(passport.initialize()) 
 app.use(passport.session())
-
+const MONGO_URL=process.env.MONGO_URL;
+const PORT=process.env.PORT
 const start = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL); 
+    await mongoose.connect(MONGO_URL); 
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
-    console.error(error);
-    process.exit(1);
+    console.error(error); 
   }
 };
  
 start()
-      
 
 app.use('/search',Stackrouter)
 app.use('/user',Userrouter)
