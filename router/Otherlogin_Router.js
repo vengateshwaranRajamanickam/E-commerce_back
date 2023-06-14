@@ -11,7 +11,7 @@ export const OtherLogin=express.Router();
   });
 
   OtherLogin.get("/login/success/google", (req, res) => {
-    const userInfo={
+    const userInfo={ 
       id:req.user.id,
       displayname:req.user.displayName,
       provider:req.user.provider,

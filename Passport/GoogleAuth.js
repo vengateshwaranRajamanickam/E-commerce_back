@@ -4,7 +4,7 @@ import {Strategy as GitHubStrategy} from 'passport-github';
 import {Strategy as FacebookStrategy} from 'passport-facebook';
 import dotenv from 'dotenv'
 dotenv.config()
-import Otherlogin from '../Models/Otherlogin'
+import Otherlogin from '../Models/Otherlogin.js'
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
