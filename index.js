@@ -53,7 +53,6 @@ const start = async () => {
  
 start()
       
-    
 
 app.use('/search',Stackrouter)
 app.use('/user',Userrouter)
