@@ -5,14 +5,14 @@ import mongoose from "mongoose"
 // const nodeServer = express();
 import cors from "cors";
 import * as dotenv from "dotenv";
-import {Stackrouter} from './Router/Stack.js'
-import {Userrouter} from './Router/User.js';
-import {Companyrouter} from './Router/Company.js'
+import {Stackrouter} from './router/Stack.js'
+import {Userrouter} from './router/User.js';
+import {Companyrouter} from './router/Company.js'
 import bodyParser from 'body-parser'
 import cookie from 'express-session'
 import passport from 'passport'
 import './Passport/GoogleAuth.js'
-import { OtherLogin } from './Router/Otherlogin.js';
+import { OtherLogin } from './router/Otherlogin.js';
 dotenv.config();
 // nodeServer.listen(PORT,HOST,database)
 // nodeServer.use("/",app)
