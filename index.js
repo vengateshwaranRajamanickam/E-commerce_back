@@ -5,16 +5,15 @@ import mongoose from "mongoose"
 // const nodeServer = express();
 import cors from "cors";
 import * as dotenv from "dotenv";
-dotenv.config();
 import {Stackrouter} from './Router/Stack.js'
-import { Userrouter } from "./Router/User.js";
+import {Userrouter} from './Router/User.js';
 import {Companyrouter} from './Router/Company.js'
 import bodyParser from 'body-parser'
 import cookie from 'express-session'
 import passport from 'passport'
 import './Passport/GoogleAuth.js'
-import { OtherLogin } from './Router/Otherlogin_Router.js';
-
+import { OtherLogin } from './Router/Otherlogin.js';
+dotenv.config();
 // nodeServer.listen(PORT,HOST,database)
 // nodeServer.use("/",app)
 
@@ -39,11 +38,13 @@ app.use(cookie({
 
 app.use(passport.initialize()) 
 app.use(passport.session())
+
 const MONGO_URL=process.env.MONGO_URL;
 const PORT=process.env.PORT
+
 const start = async function() {
   try {
-    await mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(MONGO_URL);
     console.log('Connected to the database');
 
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
