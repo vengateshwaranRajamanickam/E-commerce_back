@@ -20,4 +20,4 @@ const User = mongoose.Schema({
 })
 
 export default mongoose.model("otherlogin", User)  
- 
+  
