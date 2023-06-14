@@ -4,18 +4,18 @@ import {Strategy as GitHubStrategy} from 'passport-github';
 import {Strategy as FacebookStrategy} from 'passport-facebook';
 import dotenv from 'dotenv'
 dotenv.config()
-import Usermodel from '../Models/Otherlogin_Usermodel'
+import Otherlogin from '../Models/Otherlogin'
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `https://stack-backend-agld.onrender.com/auth/google/callback`
+    callbackURL: `https://stack-backend-agld.onrender.com/auth/google/callback` 
   },
   async function(accessToken, refreshToken, profile, done) {
     console.log(profile)
-    const check=await Usermodel.find({googleAccountId:profile.id})
+    const check=await Otherlogin.find({googleAccountId:profile.id})
     if(check==""){
-      const user=new Usermodel({
+      const user=new Otherlogin({
       displayname:profile.displayName,
       googleAccountId:profile.id, 
       userEmail:profile.email
@@ -37,9 +37,9 @@ passport.use(new GitHubStrategy({
   },
   async function(accessToken, refreshToken, profile, done) {
     console.log(profile)
-    const check=await Usermodel.find({githubAccountId:profile.id})
+    const check=await Otherlogin.find({githubAccountId:profile.id})
     if(check==""){
-      const user=new Usermodel({
+      const user=new Otherlogin({
       displayname:profile.username,
       githubAccountId:profile.id, 
       userEmail:profile.emailid

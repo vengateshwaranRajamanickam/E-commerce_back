@@ -19,4 +19,5 @@ const User = mongoose.Schema({
     }
 })
 
-export default mongoose.model("otherloginusers", User)  
+export default mongoose.model("otherlogin", User)  
+ 

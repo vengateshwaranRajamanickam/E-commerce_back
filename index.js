@@ -9,7 +9,7 @@ dotenv.config();
 import {Stackrouter} from './router/Stack.js'
 import { Userrouter } from "./router/User.js";
 import {Companyrouter} from './router/Company.js'
-import {OtherLogin} from './Router/Otherlogin_Router.js'
+import {OtherLogin} from './router/Otherlogin_Router.js'
 import bodyParser from 'body-parser'
 import cookie from 'express-session'
 import passport from 'passport'
